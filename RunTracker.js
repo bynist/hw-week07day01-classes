@@ -10,22 +10,20 @@ constructor(name,email ){
     
     // this.date = date
     this.distance = []
-    // this.time = time 
+   this.time = []
  
 }
 
-addRun(date,distance,time){
+addRun(date,time,distance){
     this.date = date
+    this.time.push(time)
     this.distance.push(distance)  
-    this.time = time
+ }
 
-}
-
-
-
+ 
  totalDistance() {// 50 meters
-        var totalDist = 1
-this.distance.forEach(element =>  totalDist*=element);
+        let totalDist = 1
+this.distance.forEach(element =>  totalDist+=element);
 return ` total distance: ${totalDist}`
 
  }
@@ -42,10 +40,15 @@ for (const value of x) {
     return `longestDist : ${longestDist}`
 }
 averageSpeed() 
+
 {
-     var speed = totalDist / time
-     var ava= speed / count 
-     return `  averageSpeed : ${ava}`
+    let totalDist = 1
+    this.distance.forEach(element =>  totalDist+=element);
+    let totalTime=0
+    this.time.forEach(element =>  totalTime+=element);
+      let speed = totalDist / totalTime
+    //  let ava = speed / count 
+     return `  averageSpeed : ${speed}`
 }
 }
 const runner = new RunTracker("Salman", "Salman@salman.com");
@@ -57,5 +60,5 @@ console.log(runner.totalDistance()) // 50 meters
 
 console.log(runner.longestDistance()) // 30 meters
 
-runner.averageSpeed() // 0.3 meters per second
+console.log(runner.averageSpeed()) // 3.3 meters per second
 
