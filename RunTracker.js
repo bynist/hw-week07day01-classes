@@ -4,52 +4,52 @@
 class RunTracker{
     
 
-constructor(name,email ){
+    constructor(name,email ){
     this.name=name
     this.email=email
     
-    // this.date = date
-    this.distance = []
+   this.distance = []
    this.time = []
- 
-}
+   this.totalDist = 1
+   this.totalTime=0
+    }
 
-addRun(date,time,distance){
+    addRun(date,time,distance){
     this.date = date
     this.time.push(time)
     this.distance.push(distance)  
- }
+     }
 
  
- totalDistance() {// 50 meters
-        let totalDist = 1
-this.distance.forEach(element =>  totalDist+=element);
-return ` total distance: ${totalDist}`
+    totalDistance() {// 50 meters
+       
+        this.distance.forEach(element =>  this.totalDist+=element);
+        return `total distance: ${this.totalDist}`
 
- }
-longestDistance() // 30 meters
-{       var longestDist = 0 
-  let x = this.distance.values()
+    }
+    longestDistance() // 30 meters
+    {
+    // {       var
+            let longestDist = 0 
+            let x = this.distance.values()
 
-for (const value of x) {
-    if (longestDist < value){
-        longestDist = value
+            for (const value of x) {
+                if (longestDist < value){
+                    longestDist = value
+                
+                }}
+
+        return `longestDist : ${longestDist}`
+    }
+
+    averageSpeed() 
+
+   {
     
-    }}
-
-    return `longestDist : ${longestDist}`
-}
-averageSpeed() 
-
-{
-    let totalDist = 1
-    this.distance.forEach(element =>  totalDist+=element);
-    let totalTime=0
-    this.time.forEach(element =>  totalTime+=element);
-      let speed = totalDist / totalTime
-    //  let ava = speed / count 
-     return `  averageSpeed : ${speed}`
-}
+    this.time.forEach(element =>  this.totalTime+=element);
+        let speed = this.totalDist / this.totalTime
+     return `averageSpeed : ${speed}`
+   }
 }
 const runner = new RunTracker("Salman", "Salman@salman.com");
 
